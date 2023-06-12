@@ -5,7 +5,7 @@ import java.util.List;
 
 import br.edu.ifba.inf011.model.resources.ResourceLoader;
 
-public class MusicaNotas implements Musica{
+public class MusicaNotas implements Musica, PlaylistItem{
 	
 	private List<String> notas;
 	private String nome;
@@ -44,9 +44,4 @@ public class MusicaNotas implements Musica{
 			str.append(this.play() + "\n");
 		return str.toString();	
 	}
-
-
-
-	
-
 }
