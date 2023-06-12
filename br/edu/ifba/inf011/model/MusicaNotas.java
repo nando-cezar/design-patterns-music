@@ -13,7 +13,7 @@ public class MusicaNotas extends MusicaBase {
 
 	public MusicaNotas(Musica componente, String nome) throws IOException {
 		super(componente);
-		MusicaBase.setListaComponentes(this);
+		super.setListaComponentes(this);
 		this.nome = nome;
 		this.notas = ResourceLoader.instance().loadNotas(nome);
 		this.reset();
@@ -37,17 +37,6 @@ public class MusicaNotas extends MusicaBase {
 
 	public void setAcordes(List<String> notas) {
 		this.notas = notas;
-	}
-
-	public String execute() {
-		StringBuffer str = new StringBuffer();
-		//this.reset();
-		while(!this.finish()){
-			for (Musica componente: super.getListaComponentes()) {
-				str.append(componente.play() + "\n");
-			}
-		}
-		return str.toString();
 	}
 
 }

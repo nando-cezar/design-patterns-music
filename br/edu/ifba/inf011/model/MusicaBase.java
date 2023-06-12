@@ -3,6 +3,7 @@ package br.edu.ifba.inf011.model;
 import java.util.ArrayList;
 import java.util.List;
 
+/* COMPOSITE */
 public class MusicaBase implements Musica {
 
     private Musica componente;
@@ -18,7 +19,13 @@ public class MusicaBase implements Musica {
 
     @Override
     public String execute() {
-        return componente.execute();
+        StringBuffer str = new StringBuffer();
+        while(!this.finish()){
+            for (Musica componente: this.getListaComponentes()) {
+                str.append(componente.play() + "\n");
+            }
+        }
+        return str.toString();
     }
 
     @Override
@@ -36,11 +43,13 @@ public class MusicaBase implements Musica {
         return componente.play();
     }
 
+    @Override
     public List<Musica> getListaComponentes() {
         return listaComponentes;
     }
 
-    public static void setListaComponentes(Musica musica) {
+    @Override
+    public void setListaComponentes(Musica musica) {
         listaComponentes.add(musica);
     }
 }

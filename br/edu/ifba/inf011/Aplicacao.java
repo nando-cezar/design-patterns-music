@@ -10,7 +10,7 @@ public class Aplicacao{
 
 	private void musica() throws IOException {
 
-		ResourceLoader.DIR_NAME = "C:\\Users\\luissant\\OneDrive - BRQ\\Documentos\\Project\\design-patterns-music\\br\\edu\\ifba\\inf011\\model\\resources\\data\\";
+		ResourceLoader.DIR_NAME = "C:\\Users\\aluno.ssa\\Documents\\Patterns\\design-patterns-music\\br\\edu\\ifba\\inf011\\model\\resources\\data\\";
 
 		Musica template = new MusicaTemplate("GodSaveTheQueen");
 
@@ -29,7 +29,7 @@ public class Aplicacao{
 
 	private void teste() throws IOException {
 
-		ResourceLoader.DIR_NAME = "C:\\Users\\luissant\\OneDrive - BRQ\\Documentos\\Project\\design-patterns-music\\br\\edu\\ifba\\inf011\\model\\resources\\data\\";
+		ResourceLoader.DIR_NAME = "C:\\Users\\aluno.ssa\\Documents\\Patterns\\design-patterns-music\\br\\edu\\ifba\\inf011\\model\\resources\\data\\";
 		Player player = new Player();
 		int iCount = 0;
 

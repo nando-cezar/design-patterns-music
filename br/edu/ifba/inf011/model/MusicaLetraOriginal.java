@@ -13,7 +13,7 @@ public class MusicaLetraOriginal extends MusicaBase {
 
 	public MusicaLetraOriginal(Musica componente, String nome) throws IOException {
 		super(componente);
-		MusicaBase.setListaComponentes(this);
+		super.setListaComponentes(this);
 		this.nome = nome;
 		this.letras = ResourceLoader.instance().loadLetra(nome);
 		this.reset();
@@ -39,14 +39,4 @@ public class MusicaLetraOriginal extends MusicaBase {
 		this.letras = letras;
 	}
 
-	public String execute() {
-		StringBuffer str = new StringBuffer();
-		//this.reset();
-		while(!this.finish()){
-			for (Musica componente: super.getListaComponentes()) {
-				str.append(componente.play() + "\n");
-			}
-		}
-		return str.toString();
-	}
 }
