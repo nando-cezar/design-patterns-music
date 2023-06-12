@@ -12,8 +12,6 @@ public class Aplicacao{
 	
 	private void musica() throws IOException {
 
-		ResourceLoader.DIR_NAME = "D:\\workspace\\DPAvalII2023.1\\src\\br\\edu\\ifba\\inf011\\model\\resources\\data\\";
-		
 		Musica musica =  new MusicaNotas("GodSaveTheQueen");
 		System.out.println(musica.execute());
 		
@@ -23,7 +21,6 @@ public class Aplicacao{
 	
 	private void teste() throws IOException {
 
-		ResourceLoader.DIR_NAME = "D:\\workspace\\DPAvalII2023.1\\src\\br\\edu\\ifba\\inf011\\model\\resources\\data\\";
 		Player player = new Player();
 		int iCount = 0;
 
