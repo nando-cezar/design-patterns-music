@@ -8,7 +8,9 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.edu.ifba.inf011.model.MusicaBase;
 import br.edu.ifba.inf011.model.MusicaNotas;
+import br.edu.ifba.inf011.model.MusicaTemplate;
 
 public class ResourceLoader {
 	
@@ -24,7 +26,7 @@ public class ResourceLoader {
 	}
 	
 	public MusicaNotas createMusica(String nome) throws IOException {
-		MusicaNotas musica = new MusicaNotas(nome);
+		MusicaNotas musica = new MusicaNotas(new MusicaTemplate(nome), nome);
 		musica.setAcordes(this.loadNotas(nome));
 		return musica;
 	}
@@ -35,6 +37,10 @@ public class ResourceLoader {
 	
 	public List<String> loadLetra(String nome) throws IOException {
 		return this.loadResource(nome, "letra");
+	}
+
+	public List<String> loadTraducao(String nome, String extensao) throws IOException {
+		return this.loadResource(nome, extensao);
 	}
 
 	public List<String> loadResource(String nome, String extensao) throws IOException {

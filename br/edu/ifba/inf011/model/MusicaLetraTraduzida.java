@@ -1,42 +1,42 @@
 package br.edu.ifba.inf011.model;
 
+import br.edu.ifba.inf011.model.resources.ResourceLoader;
+
 import java.io.IOException;
 import java.util.List;
 
-import br.edu.ifba.inf011.model.resources.ResourceLoader;
+public class MusicaLetraTraduzida extends MusicaBase {
 
-public class MusicaNotas extends MusicaBase {
-
-	private List<String> notas;
+	private List<String> letras;
 	private String nome;
 	private Integer linha;
 
-	public MusicaNotas(Musica componente, String nome) throws IOException {
+	public MusicaLetraTraduzida(Musica componente, String nome, String extensao) throws IOException {
 		super(componente);
 		MusicaBase.setListaComponentes(this);
 		this.nome = nome;
-		this.notas = ResourceLoader.instance().loadNotas(nome);
+		this.letras = ResourceLoader.instance().loadTraducao(nome, extensao);
 		this.reset();
 	}
 
 	public String getNome() {
 		return this.nome;
 	}
-
+	
 	public void reset() {
-		 this.linha = 0;
+		this.linha = 0;
 	}
-
+	
 	public Boolean finish() {
-		return this.linha >= this.notas.size();
+		return this.linha >= this.letras.size();
 	}
-
+	
 	public String play() {
-		return this.notas.get(this.linha++);
+		return this.letras.get(this.linha++);
 	}
 
-	public void setAcordes(List<String> notas) {
-		this.notas = notas;
+	public void setLetras(List<String> letras) {
+		this.letras = letras;
 	}
 
 	public String execute() {
