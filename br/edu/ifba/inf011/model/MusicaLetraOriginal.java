@@ -5,6 +5,7 @@ import br.edu.ifba.inf011.model.resources.ResourceLoader;
 import java.io.IOException;
 import java.util.List;
 
+/* Concrete Decorator: Decorator pattern */
 public class MusicaLetraOriginal extends MusicaBase {
 
 	private List<String> letras;
@@ -31,9 +32,7 @@ public class MusicaLetraOriginal extends MusicaBase {
 	}
 
 	public String play() {
-		if (this.linha < this.letras.size())
-			return this.letras.get(this.linha++) + "\n" + this.componente.play();
-		return "";
+		return this.letras.get(this.linha++) + "\n" + this.componente.play();
 	}
 
 	public void setLetras(List<String> letras) {

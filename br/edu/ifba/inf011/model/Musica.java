@@ -2,7 +2,7 @@ package br.edu.ifba.inf011.model;
 
 import java.util.List;
 
-/* COMPONENTE */
+/* Component: Decorator pattern */
 public interface Musica{
 
 	public String getNome();

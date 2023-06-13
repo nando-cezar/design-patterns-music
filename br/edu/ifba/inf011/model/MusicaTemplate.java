@@ -2,7 +2,7 @@ package br.edu.ifba.inf011.model;
 
 import java.util.List;
 
-/* LEAF */
+/* Concrete Component: Decorator pattern */
 public class MusicaTemplate implements Musica, PlaylistItem {
 
     private String nome;

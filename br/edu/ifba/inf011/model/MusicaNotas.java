@@ -5,7 +5,8 @@ import java.util.List;
 
 import br.edu.ifba.inf011.model.resources.ResourceLoader;
 
-public class MusicaNotas extends MusicaBase implements PlaylistItem{
+/* Concrete Decorator: Decorator pattern */
+public class MusicaNotas extends MusicaBase implements PlaylistItem {
 
 	private List<String> notas;
 	private String nome;
@@ -31,22 +32,11 @@ public class MusicaNotas extends MusicaBase implements PlaylistItem{
 	}
 
 	public String play() {
-		if (this.linha < this.notas.size())
-			return this.notas.get(this.linha++) + "\n" + this.componente.play();
-		return "";
+		return this.notas.get(this.linha++) + "\n" + this.componente.play();
 	}
 
 	public void setAcordes(List<String> notas) {
 		this.notas = notas;
 	}
-
-//	@Override
-//	public String execute() {
-//		StringBuffer str = new StringBuffer();
-//		while(!this.finish()){
-//			str.append(this.play() + "\n");
-//		}
-//		return str.toString();
-//	}
 
 }

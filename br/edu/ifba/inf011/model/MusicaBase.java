@@ -3,10 +3,11 @@ package br.edu.ifba.inf011.model;
 import java.util.ArrayList;
 import java.util.List;
 
-/* COMPOSITE */
+/* Base Decorator: Decorator pattern */
 public class MusicaBase implements Musica {
 
     protected Musica componente;
+
     public MusicaBase(Musica componente) {
         this.componente = componente;
     }
