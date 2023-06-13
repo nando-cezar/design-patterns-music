@@ -36,11 +36,16 @@ public class Aplicacao{
 						), musica1.getNome()
 				);
 
-		Playlist playlist = new Playlist("Minha playlist");
-		playlist.insert(musicaComNotaELetraOriginal);
-		playlist.insert(musicaSomenteComNota);
-		playlist.insert(musicaComNotaELetraOriginalETraduzida);
-		System.out.println(playlist.execute());
+		Playlist playlist1 = new Playlist("Minha playlist 1");
+		playlist1.insert(musicaSomenteComNota);
+		playlist1.insert(musicaComNotaELetraOriginalETraduzida);
+
+		Playlist playlist2 = new Playlist("Minha playlist 2");
+		playlist2.insert(musicaComNotaELetraOriginal);
+
+		playlist1.insert(playlist2);
+
+		System.out.println(playlist1.execute());
 	}
 
 

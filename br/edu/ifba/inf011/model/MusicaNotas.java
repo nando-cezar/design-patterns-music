@@ -6,6 +6,7 @@ import java.util.List;
 import br.edu.ifba.inf011.model.resources.ResourceLoader;
 
 /* Concrete Decorator: Decorator pattern */
+/* Leaf: Composite pattern */
 public class MusicaNotas extends MusicaBase {
 
 	private List<String> notas;

@@ -3,6 +3,7 @@ package br.edu.ifba.inf011.model;
 import java.util.ArrayList;
 import java.util.List;
 
+/* Composite: Composite pattern */
 public class Playlist implements PlaylistItem {
 
 	private final String nome;

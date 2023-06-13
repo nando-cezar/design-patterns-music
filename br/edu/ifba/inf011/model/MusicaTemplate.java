@@ -2,6 +2,7 @@ package br.edu.ifba.inf011.model;
 
 
 /* Concrete Component: Decorator pattern */
+/* Leaf: Composite pattern */
 public class MusicaTemplate implements Musica {
 
     private String nome;

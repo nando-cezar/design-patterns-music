@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.List;
 
 /* Concrete Decorator: Decorator pattern */
+/* Leaf: Composite pattern */
 public class MusicaLetraOriginal extends MusicaBase {
 
 	private List<String> letras;
