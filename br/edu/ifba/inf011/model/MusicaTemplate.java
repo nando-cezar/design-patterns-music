@@ -3,7 +3,7 @@ package br.edu.ifba.inf011.model;
 import java.util.List;
 
 /* LEAF */
-public class MusicaTemplate implements Musica {
+public class MusicaTemplate implements Musica, PlaylistItem {
 
     private String nome;
 

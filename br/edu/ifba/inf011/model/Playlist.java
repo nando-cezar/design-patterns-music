@@ -25,10 +25,13 @@ public class Playlist implements PlaylistItem {
 		return null;
 	}
 
+	@Override
 	public String execute() {
+		StringBuffer str = new StringBuffer();
 		for (PlaylistItem item: items){
-		    item.execute();
+			str.append(item.execute());
 		}
+		return str.toString();
 	}
 
 }

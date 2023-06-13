@@ -13,11 +13,19 @@ public class Aplicacao{
 		ResourceLoader.DIR_NAME = "C:\\Users\\aluno.ssa\\Documents\\Patterns\\design-patterns-music\\br\\edu\\ifba\\inf011\\model\\resources\\data\\";
 
 		Musica template = new MusicaTemplate("GodSaveTheQueen");
-		Musica template2 = new MusicaTemplate("AndreaDorea")
+		Musica template2 = new MusicaTemplate("AndreaDorea");
 
-		Musica musica2 = new MusicaNotas(template2)
+		Musica musica_ =
+				new MusicaNotas(
+						new MusicaLetraOriginal(
+										template,
+										template.getNome()
+						), template.getNome()
+				);
 
-		Musica musica =
+		PlaylistItem musica2 = new MusicaNotas(musica_, "AndreaDorea");
+
+		PlaylistItem musica =
 				new MusicaNotas(
 						new MusicaLetraOriginal(
 								new MusicaLetraTraduzida(
@@ -28,9 +36,9 @@ public class Aplicacao{
 						), template.getNome()
 				);
 
-				Playlist playlist = new Playlist("Minha playlist")
-				playlist.insert(musica)
-				playlist.insert(musica2)
+				Playlist playlist = new Playlist("Minha playlist");
+				playlist.insert(musica);
+				playlist.insert(musica2);
 		System.out.println(playlist.execute());
 	}
 
