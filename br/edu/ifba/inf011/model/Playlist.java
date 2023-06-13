@@ -26,7 +26,9 @@ public class Playlist implements PlaylistItem {
 	}
 
 	public String execute() {
-		return null;
+		for (PlaylistItem item: items){
+		    item.execute();
+		}
 	}
 
 }
