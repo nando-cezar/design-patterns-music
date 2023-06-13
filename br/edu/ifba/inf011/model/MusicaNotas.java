@@ -6,7 +6,7 @@ import java.util.List;
 import br.edu.ifba.inf011.model.resources.ResourceLoader;
 
 /* Concrete Decorator: Decorator pattern */
-public class MusicaNotas extends MusicaBase {
+public class MusicaNotas extends MusicaBase implements PlaylistItem {
 
 	private List<String> notas;
 	private String nome;
