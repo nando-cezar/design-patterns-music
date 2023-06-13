@@ -5,47 +5,48 @@ import java.util.List;
 
 import br.edu.ifba.inf011.model.resources.ResourceLoader;
 
-public class MusicaNotas extends MusicaBase implements Musica, PlaylistItem{
+public class MusicaNotas extends MusicaBase implements PlaylistItem{
+
 	private List<String> notas;
 	private String nome;
 	private Integer linha;
 
 	public MusicaNotas(Musica componente, String nome) throws IOException {
 		super(componente);
-		MusicaBase.setListaComponentes(this);
 		this.nome = nome;
 		this.notas = ResourceLoader.instance().loadNotas(nome);
 		this.reset();
 	}
-	
+
 	public String getNome() {
 		return this.nome;
 	}
-	
+
 	public void reset() {
 		 this.linha = 0;
 	}
-	
+
 	public Boolean finish() {
 		return this.linha >= this.notas.size();
 	}
-	
+
 	public String play() {
-		return this.notas.get(this.linha++);
+		if (this.linha < this.notas.size())
+			return this.notas.get(this.linha++) + "\n" + this.componente.play();
+		return "";
 	}
 
 	public void setAcordes(List<String> notas) {
 		this.notas = notas;
 	}
-	
-	public String execute() {
-		StringBuffer str = new StringBuffer();
-		//this.reset();
-		while(!this.finish()){
-			for (Musica componente: super.getListaComponentes()) {
-				str.append(componente.play() + "\n");
-			}
-		}
-		return str.toString();
-	}
+
+//	@Override
+//	public String execute() {
+//		StringBuffer str = new StringBuffer();
+//		while(!this.finish()){
+//			str.append(this.play() + "\n");
+//		}
+//		return str.toString();
+//	}
+
 }

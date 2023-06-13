@@ -1,5 +1,8 @@
 package br.edu.ifba.inf011.model;
 
+import java.util.List;
+
+/* COMPONENTE */
 public interface Musica{
 
 	public String getNome();
@@ -7,5 +10,4 @@ public interface Musica{
 	public void reset();
 	public Boolean finish();
 	public String play();
-
 }

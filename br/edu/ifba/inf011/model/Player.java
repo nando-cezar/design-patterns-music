@@ -23,8 +23,7 @@ public class Player {
 	public void insert(Playlist playlist) {
 		this.playlists.add(playlist);
 	}
-	
-	
+
 	public boolean temProximo() {
 		return false;
 	}
