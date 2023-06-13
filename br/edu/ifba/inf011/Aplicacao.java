@@ -12,33 +12,34 @@ public class Aplicacao{
 
 		ResourceLoader.DIR_NAME = "C:\\Users\\luissant\\OneDrive - BRQ\\Documentos\\Project\\design-patterns-music\\br\\edu\\ifba\\inf011\\model\\resources\\data\\";
 
-		Musica template = new MusicaTemplate("GodSaveTheQueen");
-		Musica template2 = new MusicaTemplate("AndreaDorea");
+		Musica musica1 = new MusicaTemplate("GodSaveTheQueen");
+		Musica musica2 = new MusicaTemplate("AndreaDorea");
 
-		Musica musica_ =
+		Musica musicaComNotaELetraOriginal =
 				new MusicaNotas(
 						new MusicaLetraOriginal(
-										template,
-										template.getNome()
-						), template.getNome()
+							musica1, musica1.getNome()
+						), musica1.getNome()
 				);
 
-		PlaylistItem musica2 = new MusicaNotas(musica_, "AndreaDorea");
+		Musica musicaSomenteComNota =
+				new MusicaNotas(musica2, musica2.getNome());
 
-		PlaylistItem musica =
+		Musica musicaComNotaELetraOriginalETraduzida =
 				new MusicaNotas(
 						new MusicaLetraOriginal(
 								new MusicaLetraTraduzida(
-										template,
-										template.getNome(),
+										musica1,
+										musica1.getNome(),
 										"pt"
-								), template.getNome()
-						), template.getNome()
+								), musica1.getNome()
+						), musica1.getNome()
 				);
 
-				Playlist playlist = new Playlist("Minha playlist");
-				playlist.insert(musica);
-				playlist.insert(musica2);
+		Playlist playlist = new Playlist("Minha playlist");
+		playlist.insert(musicaComNotaELetraOriginal);
+		playlist.insert(musicaSomenteComNota);
+		playlist.insert(musicaComNotaELetraOriginalETraduzida);
 		System.out.println(playlist.execute());
 	}
 

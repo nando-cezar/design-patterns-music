@@ -1,8 +1,5 @@
 package br.edu.ifba.inf011.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /* Base Decorator: Decorator pattern */
 public class MusicaBase implements Musica {
 

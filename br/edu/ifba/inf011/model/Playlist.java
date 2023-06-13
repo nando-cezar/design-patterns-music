@@ -17,6 +17,7 @@ public class Playlist implements PlaylistItem {
 		this.items.add(item);
 	}
 
+	@Override
 	public String getNome() {
 		return this.nome;
 	}
