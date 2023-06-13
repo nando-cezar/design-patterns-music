@@ -18,6 +18,14 @@ public class Playlist implements PlaylistItem {
 		this.items.add(item);
 	}
 
+	public void remove(PlaylistItem item) {
+		this.items.remove(item);
+	}
+
+	public List<PlaylistItem> getChildren(){
+		return this.items;
+	}
+
 	@Override
 	public String nome() {
 		return this.nome;

@@ -7,7 +7,6 @@ import br.edu.ifba.inf011.model.resources.ResourceLoader;
 
 public class Aplicacao{
 
-
 	private void musica() throws IOException {
 
 		var resource = ResourceLoader.instance();
