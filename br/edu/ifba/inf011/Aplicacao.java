@@ -15,13 +15,14 @@ public class Aplicacao{
 		Musica template = new MusicaTemplate("GodSaveTheQueen");
 
 		Musica musica =
-				new MusicaLetraTraduzida(
+				new MusicaNotas(
 						new MusicaLetraOriginal(
-								new MusicaNotas(
+								new MusicaLetraTraduzida(
 										template,
-										template.getNome()
+										template.getNome(),
+										"pt"
 								), template.getNome()
-						), template.getNome(), "pt"
+						), template.getNome()
 				);
 		System.out.println(musica.execute());
 	}

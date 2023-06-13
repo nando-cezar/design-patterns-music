@@ -13,7 +13,6 @@ public class MusicaLetraTraduzida extends MusicaBase {
 
 	public MusicaLetraTraduzida(Musica componente, String nome, String extensao) throws IOException {
 		super(componente);
-		super.setListaComponentes(this);
 		this.nome = nome;
 		this.letras = ResourceLoader.instance().loadTraducao(nome, extensao);
 		this.reset();
@@ -30,9 +29,11 @@ public class MusicaLetraTraduzida extends MusicaBase {
 	public Boolean finish() {
 		return this.linha >= this.letras.size();
 	}
-	
+
 	public String play() {
-		return this.letras.get(this.linha++);
+		if (this.linha < this.letras.size())
+			return this.letras.get(this.linha++) + "\n" + this.componente.play();
+		return "";
 	}
 
 	public void setLetras(List<String> letras) {

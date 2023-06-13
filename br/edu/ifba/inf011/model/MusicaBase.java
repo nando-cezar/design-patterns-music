@@ -6,8 +6,7 @@ import java.util.List;
 /* COMPOSITE */
 public class MusicaBase implements Musica {
 
-    private Musica componente;
-    private static final List<Musica> listaComponentes = new ArrayList<Musica>();
+    protected Musica componente;
     public MusicaBase(Musica componente) {
         this.componente = componente;
     }
@@ -21,9 +20,7 @@ public class MusicaBase implements Musica {
     public String execute() {
         StringBuffer str = new StringBuffer();
         while(!this.finish()){
-            for (Musica componente: this.getListaComponentes()) {
-                str.append(componente.play() + "\n");
-            }
+            str.append(this.play() + "\n");
         }
         return str.toString();
     }
@@ -43,13 +40,4 @@ public class MusicaBase implements Musica {
         return componente.play();
     }
 
-    @Override
-    public List<Musica> getListaComponentes() {
-        return listaComponentes;
-    }
-
-    @Override
-    public void setListaComponentes(Musica musica) {
-        listaComponentes.add(musica);
-    }
 }

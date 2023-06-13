@@ -13,7 +13,6 @@ public class MusicaNotas extends MusicaBase {
 
 	public MusicaNotas(Musica componente, String nome) throws IOException {
 		super(componente);
-		super.setListaComponentes(this);
 		this.nome = nome;
 		this.notas = ResourceLoader.instance().loadNotas(nome);
 		this.reset();
@@ -32,11 +31,22 @@ public class MusicaNotas extends MusicaBase {
 	}
 
 	public String play() {
-		return this.notas.get(this.linha++);
+		if (this.linha < this.notas.size())
+			return this.notas.get(this.linha++) + "\n" + this.componente.play();
+		return "";
 	}
 
 	public void setAcordes(List<String> notas) {
 		this.notas = notas;
 	}
+
+//	@Override
+//	public String execute() {
+//		StringBuffer str = new StringBuffer();
+//		while(!this.finish()){
+//			str.append(this.play() + "\n");
+//		}
+//		return str.toString();
+//	}
 
 }

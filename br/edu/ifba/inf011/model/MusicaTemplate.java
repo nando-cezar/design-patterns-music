@@ -20,12 +20,6 @@ public class MusicaTemplate implements Musica {
     public Boolean finish() {return true;}
     @Override
     public String play() {return "";}
-    @Override
-    public List<Musica> getListaComponentes() {
-        return null;
-    }
-    @Override
-    public void setListaComponentes(Musica musica) {}
     public String execute() {
         return "";
     }

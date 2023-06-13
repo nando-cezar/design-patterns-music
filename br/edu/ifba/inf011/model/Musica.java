@@ -10,6 +10,4 @@ public interface Musica{
 	public void reset();
 	public Boolean finish();
 	public String play();
-	public List<Musica> getListaComponentes();
-	public void setListaComponentes(Musica musica);
 }
