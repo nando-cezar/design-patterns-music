@@ -33,7 +33,7 @@ public class MusicaNotas extends MusicaBase {
 	}
 
 	public String play() {
-		return this.notas.get(this.linha++) + "\n" + this.componente.play();
+		return this.notas.get(this.linha++) + "\n" + super.play();
 	}
 
 	public void setAcordes(List<String> notas) {

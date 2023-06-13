@@ -33,7 +33,7 @@ public class MusicaLetraTraduzida extends MusicaBase {
 	}
 
 	public String play() {
-		return this.letras.get(this.linha++) + "\n" + this.componente.play();
+		return this.letras.get(this.linha++) + "\n" + super.play();
 	}
 
 	public void setLetras(List<String> letras) {
