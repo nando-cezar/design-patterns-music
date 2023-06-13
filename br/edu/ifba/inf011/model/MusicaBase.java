@@ -10,8 +10,8 @@ public class MusicaBase implements Musica {
     }
 
     @Override
-    public String getNome() {
-        return componente.getNome();
+    public String nome() {
+        return componente.nome();
     }
 
     @Override

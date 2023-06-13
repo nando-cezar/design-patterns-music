@@ -10,18 +10,11 @@ import br.edu.ifba.inf011.model.resources.ResourceLoader;
 public class MusicaNotas extends MusicaBase {
 
 	private List<String> notas;
-	private String nome;
 	private Integer linha;
 
-	public MusicaNotas(Musica componente, String nome) throws IOException {
+	public MusicaNotas(Musica componente) {
 		super(componente);
-		this.nome = nome;
-		this.notas = ResourceLoader.instance().loadNotas(nome);
 		this.reset();
-	}
-
-	public String getNome() {
-		return this.nome;
 	}
 
 	public void reset() {

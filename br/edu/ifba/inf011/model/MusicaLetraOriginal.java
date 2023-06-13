@@ -10,18 +10,11 @@ import java.util.List;
 public class MusicaLetraOriginal extends MusicaBase {
 
 	private List<String> letras;
-	private String nome;
 	private Integer linha;
 
-	public MusicaLetraOriginal(Musica componente, String nome) throws IOException {
+	public MusicaLetraOriginal(Musica componente) {
 		super(componente);
-		this.nome = nome;
-		this.letras = ResourceLoader.instance().loadLetra(nome);
 		this.reset();
-	}
-
-	public String getNome() {
-		return this.nome;
 	}
 
 	public void reset() {

@@ -8,9 +8,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.edu.ifba.inf011.model.MusicaBase;
-import br.edu.ifba.inf011.model.MusicaNotas;
-import br.edu.ifba.inf011.model.MusicaTemplate;
+import br.edu.ifba.inf011.model.*;
 
 public class ResourceLoader {
 
@@ -28,10 +26,40 @@ public class ResourceLoader {
 
     }
 
-    public MusicaNotas createMusica(String nome) throws IOException {
-        MusicaNotas musica = new MusicaNotas(null, nome);
-        musica.setAcordes(this.loadNotas(nome));
-        return musica;
+    public Musica createMusicaSomenteComNota(String nome) throws IOException {
+        Musica musica = new MusicaTemplate(nome);
+
+        MusicaNotas musicaSomenteComNota = new MusicaNotas(musica);
+        musicaSomenteComNota.setAcordes(this.loadNotas(nome));
+
+        return musicaSomenteComNota;
+    }
+
+    public Musica createMusicaComNotaLetra(String nome) throws IOException {
+        Musica musica = new MusicaTemplate(nome);
+
+        MusicaLetraOriginal musicaLetraOriginal = new MusicaLetraOriginal(musica);
+        musicaLetraOriginal.setLetras(this.loadLetra(nome));
+
+        MusicaNotas musicaComNotaLetra = new MusicaNotas(musicaLetraOriginal);
+        musicaComNotaLetra.setAcordes(this.loadNotas(nome));
+
+        return musicaComNotaLetra;
+    }
+
+    public Musica createMusicaComNotaLetraOriginalTraduzida(String nome, String extensao) throws IOException {
+        Musica musica = new MusicaTemplate(nome);
+
+        MusicaLetraTraduzida musicaLetraTraduzida = new MusicaLetraTraduzida(musica);
+        musicaLetraTraduzida.setLetras(this.loadTraducao(nome, extensao));
+
+        MusicaLetraOriginal musicaLetraOriginal = new MusicaLetraOriginal(musicaLetraTraduzida);
+        musicaLetraOriginal.setLetras(this.loadLetra(nome));
+
+        MusicaNotas musicaComNotaLetraOriginalTraduzida = new MusicaNotas(musicaLetraOriginal);
+        musicaComNotaLetraOriginalTraduzida.setAcordes(this.loadNotas(nome));
+
+        return musicaComNotaLetraOriginalTraduzida;
     }
 
     public List<String> loadNotas(String nome) throws IOException {
