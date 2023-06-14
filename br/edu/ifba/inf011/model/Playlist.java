@@ -37,6 +37,7 @@ public class Playlist implements PlaylistItem {
 
 	@Override
 	public String execute() {
+		System.out.println("Executando PLAYLIST");
 		StringBuffer str = new StringBuffer();
 		for (PlaylistItem item: items){
 			str.append(item.execute());

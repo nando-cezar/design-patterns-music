@@ -18,6 +18,7 @@ public class MusicaBase implements Musica {
 
     @Override
     public String execute() {
+        System.out.println("\tExecutando MUSICA");
         StringBuffer str = new StringBuffer();
         while(!this.finish()){
             str.append(this.play() + "\n");
