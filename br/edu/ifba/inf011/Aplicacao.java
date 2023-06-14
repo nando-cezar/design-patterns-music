@@ -56,7 +56,8 @@ public class Aplicacao {
 		playlist1.insert(playlist2);
 
 		Player player = new Player();
-		player.setMode(PlayerMode.RandomMode);
+		player.addListeners(mode -> System.out.printf("Mudei para o modo %s", mode.toString()));
+		player.setMode(PlayerMode.RepeatAll);
 		player.insert(playlist1);
 		player.insert(musicaSomenteComNota);
 		player.insert(musicaComNotaLetraOriginal);
@@ -69,10 +70,6 @@ public class Aplicacao {
 			Thread.sleep(1000);
 		}
 
-
-	}
-
-	private void teste2() {
 
 	}
 
