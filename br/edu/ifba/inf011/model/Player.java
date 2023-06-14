@@ -1,44 +1,40 @@
 package br.edu.ifba.inf011.model;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
-public class Player {
-	
-	private List<Musica> musicas;
-	private List<Playlist> playlists;
+import br.edu.ifba.inf011.model.iterator.PlayerMode;
+
+public class Player implements Iterable<PlaylistItem> {
+
+	private final List<PlaylistItem> items;
 	private PlayerMode mode;
-	private Integer index;
-	
+
 	public Player() {
 		this.setMode(PlayerMode.PlayerAll);
-		this.reset();
-		this.musicas = new ArrayList<Musica>();
+		this.items = new ArrayList<>();
 	}
-	
-	public void insert(Musica musica) {
-		this.musicas.add(musica);
-	}
-	
-	public void insert(Playlist playlist) {
-		this.playlists.add(playlist);
+
+	public void insert(PlaylistItem item) {
+		this.items.add(item);
 	}
 
 	public boolean temProximo() {
 		return false;
 	}
-	
+
 	public String proximo() {
 		return null;
 	}
-	
-	public void reset() {
-		this.index = 0;
-	}
-	
+
 	public void setMode(PlayerMode mode) {
 		this.mode = mode;
 	}
 
 
+	@Override
+	public Iterator<PlaylistItem> iterator() {
+		return mode.getIterator(items);
+	}
 }
