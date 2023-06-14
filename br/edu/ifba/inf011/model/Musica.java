@@ -1,11 +1,10 @@
 package br.edu.ifba.inf011.model;
 
-import java.util.List;
+public interface Musica extends PlaylistItem {
 
-/* Component: Decorator pattern */
-public interface Musica extends PlaylistItem{
-	public void reset();
-	public Boolean finish();
-	public String play();
-	public void setConteudo(List<String> conteudo);
+	void reset();
+
+	Boolean finish();
+
+	String play();
 }
