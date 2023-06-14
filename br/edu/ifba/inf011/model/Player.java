@@ -18,7 +18,8 @@ public class Player implements Iterable<PlaylistItem> {
 
 	private final List<PlaylistItem> items;
 	private PlayerMode mode;
-
+	private Integer index;
+	
 	public Player() {
 		this.items = new ArrayList<>();
 		this.listeners = new ArrayList<>();
@@ -49,16 +50,17 @@ public class Player implements Iterable<PlaylistItem> {
 		for (PlayerListener listener : listeners) {
 			listener.onChangeMode(mode);
 		}
-	}
 
+	public List<PlaylistItem> getItems(){
+		return this.items;
+	}
+	
 	public void setMode(PlayerMode mode) {
 		notificar();
 		this.mode = mode;
 	}
-
-
-	@Override
-	public Iterator<PlaylistItem> iterator() {
-		return mode.getIterator(items);
+	public PlaylistIterator createIterator(){
+		return this.mode.create(this);
 	}
+
 }
