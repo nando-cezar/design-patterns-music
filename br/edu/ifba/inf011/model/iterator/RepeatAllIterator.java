@@ -1,30 +1,35 @@
 package br.edu.ifba.inf011.model.iterator;
 
-import java.util.Iterator;
 import java.util.List;
 
+import br.edu.ifba.inf011.model.Player;
 import br.edu.ifba.inf011.model.PlaylistItem;
 
-public class RepeatAllIterator implements Iterator<PlaylistItem> {
+public class RepeatAllIterator implements PlaylistIterator {
 
-	int index;
-	List<PlaylistItem> items;
+	private Player player;
+	private Integer index;
 
-	public RepeatAllIterator(List<PlaylistItem> items) {
-		this.items = items;
-		this.index = 0;
+	public RepeatAllIterator(Player player) {
+		this.player = player;
+		this.reset();
 	}
 
 	@Override
-	public boolean hasNext() {
+	public boolean temProximo() {
 		return true;
 	}
 
 	@Override
-	public PlaylistItem next() {
+	public PlaylistItem proximo() {
+		List<PlaylistItem> items = this.player.getItems();
 		if (index >= items.size()) {
-			index = 0;
+			this.reset();
 		}
-		return items.get(index);
+		return items.get(index++);
+	}
+
+	public void reset() {
+		this.index = 0;
 	}
 }

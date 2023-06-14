@@ -1,14 +1,20 @@
 package br.edu.ifba.inf011.model;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
+import br.edu.ifba.inf011.model.iterator.PlayerIterable;
 import br.edu.ifba.inf011.model.iterator.PlayerMode;
+import br.edu.ifba.inf011.model.iterator.PlaylistIterator;
 
-public class Player implements Iterable<PlaylistItem> {
+
+public class Player implements PlayerIterable {
 
 	private List<PlayerListener> listeners;
+
+	public List<PlaylistItem> getItems() {
+		return this.items;
+	}
 
 	@FunctionalInterface
 	public interface PlayerListener {
@@ -16,14 +22,14 @@ public class Player implements Iterable<PlaylistItem> {
 		void onChangeMode(PlayerMode mode);
 	}
 
-	private final List<PlaylistItem> items;
+	private List<PlaylistItem> items;
 	private PlayerMode mode;
 	private Integer index;
-	
+
 	public Player() {
 		this.items = new ArrayList<>();
 		this.listeners = new ArrayList<>();
-		this.setMode(PlayerMode.PlayerAll);
+		this.mode = PlayerMode.PlayerAll;
 	}
 
 	public void insert(PlaylistItem item) {
@@ -50,17 +56,17 @@ public class Player implements Iterable<PlaylistItem> {
 		for (PlayerListener listener : listeners) {
 			listener.onChangeMode(mode);
 		}
-
-	public List<PlaylistItem> getItems(){
-		return this.items;
 	}
-	
+
+
 	public void setMode(PlayerMode mode) {
 		notificar();
 		this.mode = mode;
 	}
-	public PlaylistIterator createIterator(){
-		return this.mode.create(this);
+
+	@Override
+	public PlaylistIterator createIterator() {
+		return this.mode.createIterator(this);
 	}
 
 }

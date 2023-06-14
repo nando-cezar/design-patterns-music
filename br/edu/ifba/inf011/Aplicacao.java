@@ -1,13 +1,13 @@
 package br.edu.ifba.inf011;
 
 import java.io.IOException;
-import java.util.Iterator;
 
 import br.edu.ifba.inf011.model.Player;
+import br.edu.ifba.inf011.model.iterator.PlayerMode;
 import br.edu.ifba.inf011.model.Playlist;
 import br.edu.ifba.inf011.model.PlaylistItem;
+import br.edu.ifba.inf011.model.iterator.PlaylistIterator;
 import br.edu.ifba.inf011.model.decorator.MusicaBase;
-import br.edu.ifba.inf011.model.iterator.PlayerMode;
 import br.edu.ifba.inf011.model.resources.ResourceLoader;
 
 public class Aplicacao {
@@ -57,14 +57,14 @@ public class Aplicacao {
 
 		Player player = new Player();
 		player.addListeners(mode -> System.out.printf("Mudei para o modo %s", mode.toString()));
-		player.setMode(PlayerMode.RepeatAll);
+		player.setMode(PlayerMode.RandomMode);
 		player.insert(playlist1);
 		player.insert(musicaSomenteComNota);
 		player.insert(musicaComNotaLetraOriginal);
-		Iterator<PlaylistItem> iterator = player.iterator();
+		PlaylistIterator iterator = player.createIterator();
 
-		while (iterator.hasNext()) {
-			PlaylistItem playlistItem = iterator.next();
+		while (iterator.temProximo()) {
+			PlaylistItem playlistItem = iterator.proximo();
 			String content = playlistItem.execute();
 			System.out.println(content);
 			Thread.sleep(1000);
