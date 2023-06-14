@@ -18,6 +18,7 @@ public class MusicaLetraOriginal extends MusicaBase {
 	}
 
 	public void reset() {
+		super.reset();
 		this.linha = 0;
 	}
 

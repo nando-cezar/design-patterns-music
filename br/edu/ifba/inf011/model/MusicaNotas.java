@@ -18,7 +18,8 @@ public class MusicaNotas extends MusicaBase {
 	}
 
 	public void reset() {
-		 this.linha = 0;
+		super.reset();
+		this.linha = 0;
 	}
 
 	public Boolean finish() {

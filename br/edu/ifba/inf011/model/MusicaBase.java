@@ -3,7 +3,7 @@ package br.edu.ifba.inf011.model;
 import java.util.List;
 
 /* Base Decorator: Decorator pattern */
-public class MusicaBase implements Musica {
+public abstract class MusicaBase implements Musica {
 
     private Musica componente;
 
@@ -23,6 +23,7 @@ public class MusicaBase implements Musica {
         while(!this.finish()){
             str.append(this.play() + "\n");
         }
+        this.reset();
         return str.toString();
     }
 
