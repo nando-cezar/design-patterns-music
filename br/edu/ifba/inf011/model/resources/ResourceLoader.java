@@ -12,9 +12,7 @@ import br.edu.ifba.inf011.model.*;
 
 public class ResourceLoader {
 
-    public static String DIR_NAME =
-            System.getProperty("user.dir") + "\\br\\edu\\ifba\\inf011\\model\\resources\\data\\";
-
+    public static String DIR_NAME = System.getProperty("user.dir") + "\\br\\edu\\ifba\\inf011\\model\\resources\\data\\";
 
     public static ResourceLoader loader;
 
@@ -29,8 +27,8 @@ public class ResourceLoader {
     public Musica createMusicaSomenteComNota(String nome) throws IOException {
         Musica musica = new MusicaTemplate(nome);
 
-        MusicaNotas musicaSomenteComNota = new MusicaNotas(musica);
-        musicaSomenteComNota.setAcordes(this.loadNotas(nome));
+        Musica musicaSomenteComNota = new MusicaNotas(musica);
+        musicaSomenteComNota.setConteudo(this.loadNotas(nome));
 
         return musicaSomenteComNota;
     }
@@ -38,28 +36,28 @@ public class ResourceLoader {
     public Musica createMusicaComNotaLetra(String nome) throws IOException {
         Musica musica = new MusicaTemplate(nome);
 
-        MusicaLetraOriginal musicaLetraOriginal = new MusicaLetraOriginal(musica);
-        musicaLetraOriginal.setLetras(this.loadLetra(nome));
+        Musica musicaComNotaLetra = new MusicaNotas(musica);
+        musicaComNotaLetra.setConteudo(this.loadNotas(nome));
 
-        MusicaNotas musicaComNotaLetra = new MusicaNotas(musicaLetraOriginal);
-        musicaComNotaLetra.setAcordes(this.loadNotas(nome));
+        Musica musicaLetraOriginal = new MusicaLetraOriginal(musicaComNotaLetra);
+        musicaLetraOriginal.setConteudo(this.loadLetra(nome));
 
-        return musicaComNotaLetra;
+        return musicaLetraOriginal;
     }
 
     public Musica createMusicaComNotaLetraOriginalTraduzida(String nome, String extensao) throws IOException {
         Musica musica = new MusicaTemplate(nome);
 
-        MusicaLetraTraduzida musicaLetraTraduzida = new MusicaLetraTraduzida(musica);
-        musicaLetraTraduzida.setLetras(this.loadTraducao(nome, extensao));
+        Musica musicaComNotaLetraOriginalTraduzida = new MusicaNotas(musica);
+        musicaComNotaLetraOriginalTraduzida.setConteudo(this.loadNotas(nome));
 
-        MusicaLetraOriginal musicaLetraOriginal = new MusicaLetraOriginal(musicaLetraTraduzida);
-        musicaLetraOriginal.setLetras(this.loadLetra(nome));
+        Musica musicaLetraOriginal = new MusicaLetraOriginal(musicaComNotaLetraOriginalTraduzida);
+        musicaLetraOriginal.setConteudo(this.loadLetra(nome));
 
-        MusicaNotas musicaComNotaLetraOriginalTraduzida = new MusicaNotas(musicaLetraOriginal);
-        musicaComNotaLetraOriginalTraduzida.setAcordes(this.loadNotas(nome));
+        Musica musicaLetraTraduzida = new MusicaLetraTraduzida(musicaLetraOriginal);
+        musicaLetraTraduzida.setConteudo(this.loadTraducao(nome, extensao));
 
-        return musicaComNotaLetraOriginalTraduzida;
+        return musicaLetraTraduzida;
     }
 
     public List<String> loadNotas(String nome) throws IOException {

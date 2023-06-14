@@ -9,7 +9,7 @@ import br.edu.ifba.inf011.model.resources.ResourceLoader;
 /* Leaf: Composite pattern */
 public class MusicaNotas extends MusicaBase {
 
-	private List<String> notas;
+	private List<String> conteudo;
 	private Integer linha;
 
 	public MusicaNotas(Musica componente) {
@@ -22,15 +22,15 @@ public class MusicaNotas extends MusicaBase {
 	}
 
 	public Boolean finish() {
-		return this.linha >= this.notas.size();
+		return this.linha >= this.conteudo.size();
 	}
 
 	public String play() {
-		return this.notas.get(this.linha++) + "\n" + super.play();
+		return super.play() + "\n" + this.conteudo.get(this.linha++);
 	}
 
-	public void setAcordes(List<String> notas) {
-		this.notas = notas;
+	public void setConteudo(List<String> notas) {
+		this.conteudo = notas;
 	}
 
 }

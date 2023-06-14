@@ -1,17 +1,19 @@
 package br.edu.ifba.inf011.model;
 
+import java.util.List;
+
 /* Base Decorator: Decorator pattern */
 public class MusicaBase implements Musica {
 
-    protected Musica componente;
+    private Musica componente;
 
     public MusicaBase(Musica componente) {
         this.componente = componente;
     }
 
     @Override
-    public String nome() {
-        return componente.nome();
+    public String getNome() {
+        return componente.getNome();
     }
 
     @Override
@@ -36,6 +38,11 @@ public class MusicaBase implements Musica {
     @Override
     public String play() {
         return componente.play();
+    }
+
+    @Override
+    public void setConteudo(List<String> conteudo) {
+        componente.setConteudo(conteudo);
     }
 
 }

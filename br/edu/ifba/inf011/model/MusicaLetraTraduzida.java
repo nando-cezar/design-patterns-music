@@ -9,7 +9,7 @@ import java.util.List;
 /* Leaf: Composite pattern */
 public class MusicaLetraTraduzida extends MusicaBase {
 
-	private List<String> letras;
+	private List<String> conteudo;
 	private Integer linha;
 
 	public MusicaLetraTraduzida(Musica componente) {
@@ -22,15 +22,15 @@ public class MusicaLetraTraduzida extends MusicaBase {
 	}
 	
 	public Boolean finish() {
-		return this.linha >= this.letras.size();
+		return this.linha >= this.conteudo.size();
 	}
 
 	public String play() {
-		return this.letras.get(this.linha++) + "\n" + super.play();
+		return super.play() + "\n" + this.conteudo.get(this.linha++);
 	}
 
-	public void setLetras(List<String> letras) {
-		this.letras = letras;
+	public void setConteudo(List<String> letras) {
+		this.conteudo = letras;
 	}
 
 }
