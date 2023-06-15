@@ -10,13 +10,11 @@ import br.edu.ifba.inf011.model.PlaylistItem;
 public class RandomModeIterator implements PlaylistIterator {
 
 	private final Random random;
-	private Player player;
-	private Integer index;
+	private List<PlaylistItem> items;
 
-	public RandomModeIterator(Player player) {
-		this.player = player;
+	public RandomModeIterator(List<PlaylistItem> items) {
+		this.items = items;
 		this.random = new Random();
-		this.reset();
 	}
 
 	@Override
@@ -26,26 +24,13 @@ public class RandomModeIterator implements PlaylistIterator {
 
 	@Override
 	public PlaylistItem proximo() {
-		List<PlaylistItem> items = player.getItems();
 		PlaylistItem playlistItem = items.get(nextRandom());
 		if (playlistItem instanceof Playlist) {
 			return ((Playlist) playlistItem).randomize();
 		}
 		return playlistItem;
 	}
-
-	private int getListItemsSize() {
-		return this.player
-				.getItems()
-				.size();
-	}
-
-	public void reset() {
-		this.index = 0;
-	}
-
 	private int nextRandom() {
-		List<PlaylistItem> items = player.getItems();
-		return random.nextInt(items.size());
+		return random.nextInt(this.items.size());
 	}
 }
