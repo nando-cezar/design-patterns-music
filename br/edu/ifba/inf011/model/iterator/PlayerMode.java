@@ -1,25 +1,28 @@
 package br.edu.ifba.inf011.model.iterator;
 
+import java.util.List;
+
 import br.edu.ifba.inf011.model.Player;
+import br.edu.ifba.inf011.model.PlaylistItem;
 
 public enum PlayerMode {
 	
 	PlayerAll {
 		@Override
-		public PlaylistIterator createIterator(Player player) {
-			return new PlayerAllIterator(player);
+		public PlaylistIterator createIterator(List<PlaylistItem> items) {
+			return new PlayerAllIterator(items);
 		}
 	}, RepeatAll {
 		@Override
-		public PlaylistIterator createIterator(Player player) {
-			return new RepeatAllIterator(player);
+		public PlaylistIterator createIterator(List<PlaylistItem> items) {
+			return new RepeatAllIterator(items);
 		}
 	}, RandomMode {
 		@Override
-		public PlaylistIterator createIterator(Player player) {
-			return new RandomModeIterator(player);
+		public PlaylistIterator createIterator(List<PlaylistItem> items) {
+			return new RandomModeIterator(items);
 		}
 	};
 
-	public abstract PlaylistIterator createIterator(Player player);
+	public abstract PlaylistIterator createIterator(List<PlaylistItem> items);
 }
