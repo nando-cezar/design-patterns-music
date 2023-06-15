@@ -40,9 +40,6 @@ public class MusicaTemplate implements Musica {
     }
 
     @Override
-    public void setConteudo(List<String> conteudo) {}
-
-    @Override
     public String execute() {return "";}
 
 }

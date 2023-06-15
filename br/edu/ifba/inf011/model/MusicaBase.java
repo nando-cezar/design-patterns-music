@@ -40,9 +40,5 @@ public class MusicaBase implements Musica {
         return componente.play();
     }
 
-    @Override
-    public void setConteudo(List<String> conteudo) {
-        componente.setConteudo(conteudo);
-    }
 
 }

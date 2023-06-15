@@ -8,77 +8,70 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.edu.ifba.inf011.model.*;
+import br.edu.ifba.inf011.model.Musica;
+import br.edu.ifba.inf011.model.MusicaNome;
+import br.edu.ifba.inf011.model.decorator.MusicaBase;
+import br.edu.ifba.inf011.model.decorator.MusicaLetraOriginal;
+import br.edu.ifba.inf011.model.decorator.MusicaLetraTraduzida;
+import br.edu.ifba.inf011.model.decorator.MusicaNotas;
 
 public class ResourceLoader {
 
-    public static String DIR_NAME = System.getProperty("user.dir") + "\\br\\edu\\ifba\\inf011\\model\\resources\\data\\";
+	private static final String DIR_NAME =
+			System.getProperty("user.dir") + "\\br\\edu\\ifba\\inf011\\model\\resources\\data\\";
 
-    public static ResourceLoader loader;
+	private static ResourceLoader loader = null;
 
-    public static ResourceLoader instance() {
-        if (ResourceLoader.loader == null) {
-            ResourceLoader.loader = new ResourceLoader();
-        }
-        return ResourceLoader.loader;
+	public static ResourceLoader instance() {
+		if (ResourceLoader.loader == null) {
+			ResourceLoader.loader = new ResourceLoader();
+		}
+		return ResourceLoader.loader;
 
-    }
+	}
 
-    public Musica createMusicaSomenteComNota(String nome) throws IOException {
-        Musica musica = new MusicaTemplate(nome);
+	public MusicaBase createMusicaSomenteComNota(String nome) throws IOException {
+		Musica musica = new MusicaNome(nome);
+		MusicaNotas musicaSomenteComNota = new MusicaNotas(musica);
+		return musicaSomenteComNota;
+	}
 
-        Musica musicaSomenteComNota = new MusicaNotas(musica);
-        musicaSomenteComNota.setConteudo(this.loadNotas(nome));
+	public MusicaBase createMusicaComNotaLetra(String nome) throws IOException {
+		Musica musica = new MusicaNome(nome);
+		MusicaNotas musicaComNotaLetra = new MusicaNotas(musica);
+		MusicaLetraOriginal musicaLetraOriginal = new MusicaLetraOriginal(musicaComNotaLetra);
+		return musicaLetraOriginal;
+	}
 
-        return musicaSomenteComNota;
-    }
+	public MusicaBase createMusicaComNotaLetraOriginalTraduzida(String nome, String extensao)
+			throws IOException {
+		Musica musica = new MusicaNome(nome);
+		MusicaNotas musicaComNotaLetraOriginalTraduzida = new MusicaNotas(musica);
+		MusicaLetraOriginal musicaLetraOriginal = new MusicaLetraOriginal(
+				musicaComNotaLetraOriginalTraduzida);
 
-    public Musica createMusicaComNotaLetra(String nome) throws IOException {
-        Musica musica = new MusicaTemplate(nome);
+		return new MusicaLetraTraduzida(musicaLetraOriginal, "pt");
+	}
 
-        Musica musicaComNotaLetra = new MusicaNotas(musica);
-        musicaComNotaLetra.setConteudo(this.loadNotas(nome));
+	public List<String> loadNotas(String nome) throws IOException {
+		return this.loadResource(nome, "notas");
+	}
 
-        Musica musicaLetraOriginal = new MusicaLetraOriginal(musicaComNotaLetra);
-        musicaLetraOriginal.setConteudo(this.loadLetra(nome));
+	public List<String> loadLetra(String nome) throws IOException {
+		return this.loadResource(nome, "letra");
+	}
 
-        return musicaLetraOriginal;
-    }
+	public List<String> loadTraducao(String nome, String extensao) throws IOException {
+		return this.loadResource(nome, extensao);
+	}
 
-    public Musica createMusicaComNotaLetraOriginalTraduzida(String nome, String extensao) throws IOException {
-        Musica musica = new MusicaTemplate(nome);
-
-        Musica musicaComNotaLetraOriginalTraduzida = new MusicaNotas(musica);
-        musicaComNotaLetraOriginalTraduzida.setConteudo(this.loadNotas(nome));
-
-        Musica musicaLetraOriginal = new MusicaLetraOriginal(musicaComNotaLetraOriginalTraduzida);
-        musicaLetraOriginal.setConteudo(this.loadLetra(nome));
-
-        Musica musicaLetraTraduzida = new MusicaLetraTraduzida(musicaLetraOriginal);
-        musicaLetraTraduzida.setConteudo(this.loadTraducao(nome, extensao));
-
-        return musicaLetraTraduzida;
-    }
-
-    public List<String> loadNotas(String nome) throws IOException {
-        return this.loadResource(nome, "notas");
-    }
-
-    public List<String> loadLetra(String nome) throws IOException {
-        return this.loadResource(nome, "letra");
-    }
-
-    public List<String> loadTraducao(String nome, String extensao) throws IOException {
-        return this.loadResource(nome, extensao);
-    }
-
-    public List<String> loadResource(String nome, String extensao) throws IOException {
-        List<String> resource = new ArrayList<String>();
-        Path path = Paths.get(ResourceLoader.DIR_NAME + nome + "." + extensao);
-        Files
-                .lines(path, StandardCharsets.ISO_8859_1)
-                .forEach(resource::add);
-        return resource;
-    }
+	public List<String> loadResource(String nome, String extensao) throws IOException {
+		List<String> resource = new ArrayList<>();
+		Path path = Paths.get(ResourceLoader.DIR_NAME + nome + "." + extensao);
+		Files
+				.lines(path, StandardCharsets.ISO_8859_1)
+				.forEach(resource::add);
+		return resource;
+	}
 
 }
