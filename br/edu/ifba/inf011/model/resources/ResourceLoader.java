@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.edu.ifba.inf011.model.Musica;
-import br.edu.ifba.inf011.model.MusicaNome;
+import br.edu.ifba.inf011.model.decorator.MusicaNome;
 import br.edu.ifba.inf011.model.decorator.MusicaBase;
 import br.edu.ifba.inf011.model.decorator.MusicaLetraOriginal;
 import br.edu.ifba.inf011.model.decorator.MusicaLetraTraduzida;

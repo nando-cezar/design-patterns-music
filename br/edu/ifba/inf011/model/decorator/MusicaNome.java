@@ -1,5 +1,7 @@
-package br.edu.ifba.inf011.model;
+package br.edu.ifba.inf011.model.decorator;
 
+
+import br.edu.ifba.inf011.model.Musica;
 
 /* Concrete Component: Decorator pattern */
 /* Leaf: Composite pattern */
