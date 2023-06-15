@@ -24,8 +24,6 @@ public class Player implements PlayerIterable {
 
 	private List<PlaylistItem> items;
 	private PlayerMode mode;
-	private Integer index;
-
 	public Player() {
 		this.items = new ArrayList<>();
 		this.listeners = new ArrayList<>();
@@ -35,15 +33,6 @@ public class Player implements PlayerIterable {
 	public void insert(PlaylistItem item) {
 		this.items.add(item);
 	}
-
-	public boolean temProximo() {
-		return false;
-	}
-
-	public String proximo() {
-		return null;
-	}
-
 	public void addListeners(PlayerListener listener) {
 		this.listeners.add(listener);
 	}
