@@ -63,14 +63,19 @@ public class Aplicacao {
 		player.insert(musicaComNotaLetraOriginal);
 		PlaylistIterator iterator = player.createIterator();
 
+		int iCount = 0;
 		while (iterator.temProximo()) {
 			PlaylistItem playlistItem = iterator.proximo();
 			String content = playlistItem.execute();
 			System.out.println(content);
 			Thread.sleep(1000);
+			if (iCount % 5 == 0){
+				player.setMode(PlayerMode.RepeatAll);
+			}
+			if (iCount % 7 == 0){
+				player.setMode(PlayerMode.PlayerAll);
+			}
+			iCount++;
 		}
-
-
 	}
-
 }
