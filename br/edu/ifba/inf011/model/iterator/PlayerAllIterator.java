@@ -6,23 +6,22 @@ import br.edu.ifba.inf011.model.Player;
 import br.edu.ifba.inf011.model.PlaylistItem;
 
 public class PlayerAllIterator implements PlaylistIterator {
-    private Player player;
+    private List<PlaylistItem> items;
     private Integer index;
 
-    public PlayerAllIterator(Player player) {
-        this.player = player;
+    public PlayerAllIterator(List<PlaylistItem> items) {
+        this.items = this.items;
         this.reset();
     }
 
     @Override
     public boolean temProximo() {
-        return this.index < this.player.getItems().size();
+        return this.index < this.items.size();
     }
 
     @Override
     public PlaylistItem proximo() {
         if(this.temProximo()) {
-            List<PlaylistItem> items = this.player.getItems();
             return items.get(index++);
         }
         return null;
