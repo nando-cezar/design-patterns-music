@@ -2,15 +2,16 @@ package br.edu.ifba.inf011.model.iterator;
 
 import java.util.List;
 
-import br.edu.ifba.inf011.model.Player;
-import br.edu.ifba.inf011.model.PlaylistItem;
+import br.edu.ifba.inf011.model.composite.PlaylistItem;
+import br.edu.ifba.inf011.model.iterator.PlaylistIterator;
 
+/* Concrete Iterator: Iterator pattern */
 public class PlayerAllIterator implements PlaylistIterator {
-    private List<PlaylistItem> items;
+    private final List<PlaylistItem> items;
     private Integer index;
 
     public PlayerAllIterator(List<PlaylistItem> items) {
-        this.items = this.items;
+        this.items = items;
         this.reset();
     }
 
@@ -21,9 +22,7 @@ public class PlayerAllIterator implements PlaylistIterator {
 
     @Override
     public PlaylistItem proximo() {
-        if(this.temProximo()) {
-            return items.get(index++);
-        }
+        if(this.temProximo()) return items.get(index++);
         return null;
     }
 

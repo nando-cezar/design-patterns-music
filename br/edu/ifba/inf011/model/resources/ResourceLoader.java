@@ -8,7 +8,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.edu.ifba.inf011.model.Musica;
+import br.edu.ifba.inf011.model.decorator.Musica;
 import br.edu.ifba.inf011.model.decorator.MusicaNome;
 import br.edu.ifba.inf011.model.decorator.MusicaBase;
 import br.edu.ifba.inf011.model.decorator.MusicaLetraOriginal;

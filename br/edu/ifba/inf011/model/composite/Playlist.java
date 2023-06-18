@@ -1,4 +1,4 @@
-package br.edu.ifba.inf011.model;
+package br.edu.ifba.inf011.model.composite;
 
 import java.util.ArrayList;
 import java.util.List;

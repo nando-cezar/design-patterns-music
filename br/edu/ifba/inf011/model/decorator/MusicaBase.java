@@ -1,9 +1,8 @@
 package br.edu.ifba.inf011.model.decorator;
 
-import br.edu.ifba.inf011.model.Musica;
 import br.edu.ifba.inf011.model.resources.ResourceLoader;
 
-/* Component: Decorator pattern */
+/* Decorator: Decorator pattern */
 public abstract class MusicaBase implements Musica {
 
 	protected Musica component;

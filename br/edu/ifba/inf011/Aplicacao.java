@@ -1,21 +1,31 @@
 package br.edu.ifba.inf011;
 
 import java.io.IOException;
+import java.util.Random;
 
-import br.edu.ifba.inf011.model.Player;
+import br.edu.ifba.inf011.model.iterator.Player;
 import br.edu.ifba.inf011.model.iterator.PlayerMode;
-import br.edu.ifba.inf011.model.Playlist;
-import br.edu.ifba.inf011.model.PlaylistItem;
+import br.edu.ifba.inf011.model.composite.Playlist;
+import br.edu.ifba.inf011.model.composite.PlaylistItem;
 import br.edu.ifba.inf011.model.iterator.PlaylistIterator;
 import br.edu.ifba.inf011.model.decorator.MusicaBase;
+import br.edu.ifba.inf011.model.observer.PlayerListener;
 import br.edu.ifba.inf011.model.resources.ResourceLoader;
 
-public class Aplicacao {
+/* Concrete Observer: Observer pattern */
+public class Aplicacao implements PlayerListener {
+
+	private final Player player;
+
+	public Aplicacao() {
+		this.player = new Player();
+		this.player.addListeners(this);
+	}
 
 	public static void main(String[] args) throws IOException, InterruptedException {
 		Aplicacao app = new Aplicacao();
 //		app.musica();
-		app.teste();
+		app.player();
 	}
 
 	private void musica() throws IOException {
@@ -38,7 +48,7 @@ public class Aplicacao {
 		System.out.println(playlist1.execute());
 	}
 
-	private void teste() throws IOException, InterruptedException {
+	private void player() throws IOException, InterruptedException {
 
 		var resource = ResourceLoader.instance();
 		MusicaBase musicaComNotaLetraOriginal = resource.createMusicaComNotaLetra("AndreaDorea");
@@ -55,27 +65,35 @@ public class Aplicacao {
 
 		playlist1.insert(playlist2);
 
-		Player player = new Player();
-		player.addListeners(mode -> System.out.printf("Mudei para o modo %s", mode.toString()));
-		player.setMode(PlayerMode.RandomMode);
-		player.insert(playlist1);
-		player.insert(musicaSomenteComNota);
-		player.insert(musicaComNotaLetraOriginal);
+		player.addItem(playlist1);
+		player.addItem(playlist2);
+		player.addItem(musicaSomenteComNota);
+		player.addItem(musicaComNotaLetraOriginal);
+
 		PlaylistIterator iterator = player.createIterator();
 
-		int iCount = 0;
 		while (iterator.temProximo()) {
+
 			PlaylistItem playlistItem = iterator.proximo();
 			String content = playlistItem.execute();
+
 			System.out.println(content);
+
 			Thread.sleep(1000);
-			if (iCount % 5 == 0){
+			int numero = new Random().nextInt(2,8);
+
+			if (numero % 5 == 0){
 				player.setMode(PlayerMode.RepeatAll);
+				iterator = player.createIterator();
+			}else if (numero % 7 == 0){
+				player.setMode(PlayerMode.RandomMode);
+				iterator = player.createIterator();
 			}
-			if (iCount % 7 == 0){
-				player.setMode(PlayerMode.PlayerAll);
-			}
-			iCount++;
 		}
+	}
+
+	@Override
+	public void onChangeMode() {
+		System.out.printf("\n::::::::::::\nModo: %s, está ativado!\n", player.getMode());
 	}
 }
