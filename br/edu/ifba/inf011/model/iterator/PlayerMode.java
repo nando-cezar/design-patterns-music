@@ -2,8 +2,7 @@ package br.edu.ifba.inf011.model.iterator;
 
 import java.util.List;
 
-import br.edu.ifba.inf011.model.Player;
-import br.edu.ifba.inf011.model.PlaylistItem;
+import br.edu.ifba.inf011.model.composite.PlaylistItem;
 
 public enum PlayerMode {
 	

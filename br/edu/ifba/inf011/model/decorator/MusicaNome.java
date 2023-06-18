@@ -1,8 +1,6 @@
 package br.edu.ifba.inf011.model.decorator;
 
 
-import br.edu.ifba.inf011.model.Musica;
-
 /* Concrete Component: Decorator pattern */
 /* Leaf: Composite pattern */
 public class MusicaNome implements Musica {
