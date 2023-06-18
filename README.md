@@ -51,7 +51,7 @@ músicas de forma pseudo-aleatória.</p>
 <ul>
     <li><a href="https://github.com/pooinf008/WKS2023.1/blob/master/DPAvalII2023.1/IFBAINF011Avalia%C3%A7%C3%A3oII.2023.1.pdf">Enunciado do projeto</a></li>
     <li><a href="https://github.com/pooinf008/WKS2023.1/tree/master/DPAvalII2023.1/src/br/edu/ifba/inf011/model">Classes de modelo</a></li>
-    <li><a href="https://github.com/nando-cezar/design-patterns-music/blob/main/docs/Diagrama.pdf"></a></li>
+    <li><a href="https://github.com/nando-cezar/design-patterns-music/blob/main/docs/Diagrama.pdf">Diagrama de relacionamento entre os padrões utilizados no projeto</a></li>
 </ul>
 
 
