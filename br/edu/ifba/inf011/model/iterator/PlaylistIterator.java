@@ -1,9 +1,9 @@
 package br.edu.ifba.inf011.model.iterator;
 
-import br.edu.ifba.inf011.model.PlaylistItem;
+import br.edu.ifba.inf011.model.composite.PlaylistItem;
 
-
+/* Iterator: Iterator pattern */
 public interface PlaylistIterator {
-    public boolean temProximo();
-    public PlaylistItem proximo();
+    boolean temProximo();
+    PlaylistItem proximo();
 }

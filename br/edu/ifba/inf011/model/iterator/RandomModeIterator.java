@@ -3,14 +3,15 @@ package br.edu.ifba.inf011.model.iterator;
 import java.util.List;
 import java.util.Random;
 
-import br.edu.ifba.inf011.model.Player;
-import br.edu.ifba.inf011.model.Playlist;
-import br.edu.ifba.inf011.model.PlaylistItem;
+import br.edu.ifba.inf011.model.composite.Playlist;
+import br.edu.ifba.inf011.model.composite.PlaylistItem;
+import br.edu.ifba.inf011.model.iterator.PlaylistIterator;
 
+/* Concrete Iterator: Iterator pattern */
 public class RandomModeIterator implements PlaylistIterator {
 
 	private final Random random;
-	private List<PlaylistItem> items;
+	private final List<PlaylistItem> items;
 
 	public RandomModeIterator(List<PlaylistItem> items) {
 		this.items = items;
